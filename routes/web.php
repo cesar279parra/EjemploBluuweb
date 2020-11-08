@@ -14,11 +14,17 @@ use App\Http\Controllers\Pagescontroller;
 |
 */
 
-Route::get('/', 'Pagescontroller@inicio');
- 
 
-Route:: get('fotos', 'Pagescontroller@fotos')->name('foto');
+/*
+Route::get('/', function (){
+    return view('welcome');
+});
+  */
 
-Route:: get('blog', 'Pagescontroller@blog')->name('noticias');
+Route::get('/', [PagesController::class, 'inicio'])->name ('inicio');
 
-Route:: get('nosotros/{nombre?}','Pagescontroller@nosotros' )->name('nosotros');
+Route:: get('fotos', [PagesController::class, 'fotos'])->name('foto');
+
+Route:: get('blog', [PagesController::class, 'blog'])->name('noticias');
+
+Route:: get('nosotros/{nombre?}',[PagesController::class, 'nosotros'])->name('nosotros');
